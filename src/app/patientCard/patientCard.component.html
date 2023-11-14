@@ -1,0 +1,47 @@
+<div >
+  <h2>Patient Card</h2>
+  <form [formGroup]="patientForm" (ngSubmit)="updatePatientForm()">
+    <div class="flex justify-between">
+      
+      <label for="patientId">Patient</label>
+      <p> </p>
+      <select class="form-control" formControlName="patientId">
+        <!-- <option value="">Choose patient</option> -->
+        <option *ngFor="let patient of patients" [value]="patient.id" >{{ patient.id }}, {{ patient.name }}, {{ patient.gender }}</option>
+      </select>
+      <p> </p>
+
+      <label for="procedureId">Procedure</label>
+      <p> </p>
+      <select class="form-control" formControlName="procedureId">
+        <!-- <option value="">Choose procedure</option> -->
+        <option *ngFor="let procedure of procedures" [value]="procedure.name">{{ procedure.id }}, {{ procedure.name }}, {{ procedure.category }}</option>
+      </select>
+      <p> </p>
+
+      <label for="serviceCategoryType">Service Category Type</label>
+      <p> </p>
+      <select class="form-control" formControlName="serviceCategoryType">
+        <!-- <option value="">Choose service category type</option> -->
+        <option *ngFor="let serviceCategoryType of serviceCategoryTypes" [value]="serviceCategoryType.name">{{ serviceCategoryType.name }}, ({{ serviceCategoryType.type }})</option>
+      </select>
+      <p> </p>
+    
+      <label for="patientForm">Comment / note</label>
+      <p> </p>
+      <input name="patientForm.comment" id="patientForm.comment" type="text" class="form-control" formControlName="comment">
+      <p> </p>
+
+      <label for="dateInput">Select a Date:</label>
+      <p> </p>
+      <input type="date" id="patientForm.date" name="patientForm.date" class="form-control" formControlName="date">
+      <p> </p>
+
+      <p>Complete the form to enable button.</p>
+      <button type="submit" [disabled]="!patientForm.valid">Submit</button>
+      <p>You selected: </p>
+      <pre>{{patientForm.value | json}}</pre>
+
+    </div>
+  </form>
+</div>
