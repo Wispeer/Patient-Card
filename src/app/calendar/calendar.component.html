@@ -1,9 +1,27 @@
-<span class="material-icon" aria-hidden="true" translate="no">naigate_before</span>
-<!-- <mat-icon>naigate_before</mat-icon> -->
-<p></p>
-<label for="dateInput">Select a Date:</label>
-<input type="month" id="month" name="month" onsubmit="generateCalendar()">
-
+<div class="filter-flex-container">
+    <div class="button">
+        <button class="day-of-week" mat-fab color="#1976d2" (click)="previousMonth()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <p></p>
+        <!-- <label class="button" for="button"> Previous </label> -->
+    </div>
+    <div>
+        <label for="dateInput">Select a month and year: </label>
+        <input type="month" id="month" name="month" onsubmit="generateCalendar()">
+    </div>
+    <div class="button">
+        <!-- <label class="button" for="button"> Next </label> -->
+        <p></p>
+        <button 
+        class="day-of-week" 
+        mat-fab color="#1976d2" 
+        (monthChange)="generateCalendar()"
+        (click)="nextMonth()">
+            <mat-icon>arrow_forward</mat-icon>
+        </button>
+    </div>  
+</div>
 <p></p>
 
 <div class="calendar-header">

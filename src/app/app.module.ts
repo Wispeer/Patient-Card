@@ -14,6 +14,9 @@ import { CommonModule, DatePipe, NgFor } from '@angular/common';
 import { PatientEventOrderState } from './store/patient-event-order.state';
 import { OrderListComponent } from './order-list/order-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
@@ -27,6 +30,9 @@ import { CalendarComponent } from './calendar/calendar.component';
     AppRoutingModule,
     CommonModule,
     MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
     NgxsModule.forRoot([PatientsState, ProceduresState, ServiceCategoryTypesState,PatientEventOrderState], {}), 
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),

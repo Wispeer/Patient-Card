@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class CalendarComponent implements OnInit{
+
+  @Output() monthChange = new EventEmitter<number>();
+
   today: Date = new Date();
   month= this.today.getMonth();
   year = this.today.getFullYear();
@@ -34,28 +37,30 @@ export class CalendarComponent implements OnInit{
 
   ngOnInit(): void {
     this.formattedDate();
+    this.generateCalendar();
   }
   
   generateCalendar(): void {
-    //debugger;
-  
+    console.log('actual month is ', this.month);
     this.firstDayOfMonth = new Date(this.year, this.month, 1);
     this.lastDayOfMonth = new Date(this.year, this.month + 1, 0);
+    console.log('actual month is ', this.month);
     this.lastDayOfLastMonth = new Date(this.year, this.month, 0);
     this.firstDayOfNextMonth = new Date(this.year, this.month + 1, 1);
-  
+    console.log('actual month is ', this.month);
     this.daysFromLastMonth = this.firstDayOfMonth.getDay() === 0 ? 6 : this.firstDayOfMonth.getDay() - 1;
-  
+    console.log('actual month is ', this.month);
     this.firstDayOfLastMonth = new Date(this.lastDayOfLastMonth);
     this.firstDayOfLastMonth.setDate(this.lastDayOfMonth.getDate() - this.daysFromLastMonth +2);
-  
+    console.log('actual month is ', this.month);
     this.daysFromNextMonth = 6 - this.lastDayOfMonth.getDay();
     this.lastDayOfNextMonthInWeek = new Date(this.firstDayOfNextMonth);
     this.lastDayOfNextMonthInWeek.setDate(this.firstDayOfNextMonth.getDate() + this.daysFromNextMonth);
-  
+    console.log('actual month is ', this.month);
     this.daysInLastMonth = this.getDaysArray(this.firstDayOfLastMonth, this.lastDayOfLastMonth);
     this.daysInMonth = this.getDaysArray(this.firstDayOfMonth, this.lastDayOfMonth);
     this.daysInNextMonth = this.getDaysArray(this.firstDayOfNextMonth, this.lastDayOfNextMonthInWeek);
+    console.log('actual month is ', this.month);
   }
   
   getFormattedDate(date: Date): string {
@@ -64,7 +69,7 @@ export class CalendarComponent implements OnInit{
   
   formattedDate() {
     const day = this.datePipe.transform(Date.now(), 'EEE');
-    const month = this.datePipe.transform(Date.now(), 'MMMM');
+    const month = this.datePipe.transform(this.month, 'MMMM');
     
     console.log('actual day is ', day); 
     console.log('actual month is ', month);
@@ -94,19 +99,36 @@ export class CalendarComponent implements OnInit{
   }
   
   nextMonth() {
-    this.month ++;
+    console.log('month is actually set to : ' , this.month, '   ', this.year)
+
+    if (this.month == 12){
+      this.month = 1;
+      this.year = this.year + 1;
+    }
+    else this.month = this.month + 1;
+    console.log('month is actually set to : ' , this.month, '   ', this.year)
   }
   
   previousMonth(){
-    this.month --;
+    console.log('month is actually set to : ' , this.month, '   ', this.year)
+    
+    if (this.month == 1){
+      this.month = 12;
+      this.year = this.year - 1;
+    }
+    else this.month = this.month - 1;
+
+    console.log('month is actually set to : ' , this.month, '   ', this.year)
   }
 
   nextYear(){
-    this.year ++;
+    this.year = this.year + 1;
+    console.log('month is actually set to : ' , this.month, '   ', this.year)
   }
 
   previousYear(){
-    this.year --;
+    this.year = this.year - 1;
+    console.log('month is actually set to : ' , this.month, '   ', this.year)
   }
     
 }

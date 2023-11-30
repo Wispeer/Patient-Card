@@ -9,6 +9,21 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
   }
+
+  .filter-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 8px 8px 8px 0;
+  }
   
   .calendar-header {
     display: grid;
