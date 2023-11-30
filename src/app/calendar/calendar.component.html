@@ -1,0 +1,24 @@
+<span class="material-icon" aria-hidden="true" translate="no">naigate_before</span>
+<!-- <mat-icon>naigate_before</mat-icon> -->
+<p></p>
+<label for="dateInput">Select a Date:</label>
+<input type="month" id="month" name="month" onsubmit="generateCalendar()">
+
+<p></p>
+
+<div class="calendar-header">
+    <div class="day-of-week">Mon</div>
+    <div class="day-of-week">Tue</div>
+    <div class="day-of-week">Wed</div>
+    <div class="day-of-week">Thu</div>
+    <div class="day-of-week">Fri</div>
+    <div class="day-of-week">Sat</div>
+    <div class="day-of-week">Sun</div>
+</div>
+<div class="calendar" *ngFor="let week of getCalendarWeeks()">
+    <div class="day" *ngFor="let day of week">{{ getFormattedDate(day) }}</div>
+</div>
+<b></b>
+<p>Today is {{today | date}}</p>
+<p>Or if you prefer, {{today | date:'fullDate'}}</p>
+<p>The time is {{today | date:'h:mm a z'}}</p>

@@ -58,25 +58,16 @@ export class PatientCardComponent implements OnInit, OnDestroy{
     
   
     this.patients$.subscribe(state => { this.patients = state });
-    console.log('patients from ', this.patients);
     this.procedures$.subscribe(state => { this.procedures = state });
-    console.log('procedures from ', this.procedures);
     this.serviceCategoryTypes$.subscribe(state => { this.serviceCategoryTypes = state });
-    console.log('serviceCategoryTypes from ', this.serviceCategoryTypes);
     this.patientEventOrder$.subscribe(state => {this.patientEventOrder = state});
-    console.log('patientEventOrder from ', this.patientEventOrder);
-
-    console.log('patientForm ', this.patientForm.value);
    }
 
   updatePatientForm() {
     this.patientEventOrder = this.patientForm.value;
 
-    console.log('patientEventOrder from update', this.patientEventOrder);
-
     this.store.dispatch(new PatientEventOrderAction(this.patientEventOrder))
 
     console.warn(this.patientForm.value);
-    console.log('patientForm from update', this.patientForm.value);
   }
 }

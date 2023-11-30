@@ -10,15 +10,17 @@ import { PatientsState } from './store/patients.state';
 import { ProceduresState } from './store/procedures.state';
 import { ServiceCategoryTypesState } from './store/service-category-types.state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, DatePipe, NgFor } from '@angular/common';
 import { PatientEventOrderState } from './store/patient-event-order.state';
 import { OrderListComponent } from './order-list/order-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrderListComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { MatTableModule } from '@angular/material/table';
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NoopAnimationsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

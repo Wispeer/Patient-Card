@@ -38,24 +38,16 @@ export class OrderListComponent implements OnInit{
     this.procedures$ = this.store.select(state => state.procedures);
     this.serviceCategoryTypes$ = this.store.select(state => state.serviceCategoryTypes);
     this.patientEventOrder$ = this.store.select(state => state);
-    console.log('patientEventOrder from ', this.patientEventOrder);
   }
 
   ngOnInit(){
 
     this.patients$.subscribe(state => { this.patients = state });
-    console.log('patients from ', this.patients);
     this.procedures$.subscribe(state => { this.procedures = state });
-    console.log('procedures from ', this.procedures);
     this.serviceCategoryTypes$.subscribe(state => { this.serviceCategoryTypes = state });
-    console.log('serviceCategoryTypes from ', this.serviceCategoryTypes);
 
     this.patientEventOrder$.subscribe(state => { this.patientEventOrder = state });
-    console.log('patientEventOrder from ', this.patientEventOrder.patientEventOrder);
 
     this.dataSource = this.patientEventOrder.patientEventOrder.orders;
-    console.log('dataSource is',this.dataSource)
-    
   }
-
 }

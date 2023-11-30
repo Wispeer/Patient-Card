@@ -4,10 +4,12 @@ import { PatientCardComponent } from './patientCard/patientCard.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderListComponent } from './order-list/order-list.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {path: 'patientCard', component: PatientCardComponent},
   {path: 'orderList', component: OrderListComponent},
+  {path: 'calendar', component: CalendarComponent},
   {path: '', redirectTo: '/patientCard', pathMatch: 'full'}
 ];
 
