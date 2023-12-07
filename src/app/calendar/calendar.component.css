@@ -55,7 +55,7 @@ body {
   }
 
   .day {
-    display: flex;
+    /* display: flex; */
     justify-content: flex-start;
     align-items: flex-start;
     height: 200px;

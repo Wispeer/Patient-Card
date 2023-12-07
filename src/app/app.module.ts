@@ -33,7 +33,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    NgxsModule.forRoot([PatientsState, ProceduresState, ServiceCategoryTypesState,PatientEventOrderState], {}), 
+    NgxsModule.forRoot([PatientsState, ProceduresState, ServiceCategoryTypesState,PatientEventOrderState,], {}), 
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NoopAnimationsModule,

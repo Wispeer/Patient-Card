@@ -10,7 +10,7 @@ export interface PatientEventOrder {
   procedureId?: number | any,
   serviceCategoryType?: string | any,
   comment?: string | any,
-  date?: Date | any 
+  date?: Date 
 }
 
 export interface PatientEventOrderModel{

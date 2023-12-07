@@ -34,7 +34,16 @@
     <div class="day-of-week">Sun</div>
 </div>
 <div class="calendar" *ngFor="let week of getCalendarWeeks()">
-    <div class="day" *ngFor="let day of week">{{ getFormattedDate(day) }}</div>
+    <div class="day" *ngFor="let day of week">
+        {{ getFormattedDate(day)}}
+        <br>
+        <div *ngFor="let patientCalendarEventOrder of patientEventOrder">
+            <div *ngIf="patientEventOrder">
+                {{assignEventToCalendar(day)}}
+                Patient ID: {{assignEventToCalendar(day)}}
+            </div>
+        </div>
+    </div>
 </div>
 <b></b>
 <p>Today is {{today | date}}</p>
